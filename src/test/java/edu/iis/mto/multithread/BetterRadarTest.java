@@ -6,11 +6,15 @@ import static org.mockito.Mockito.verify;
 
 import java.util.concurrent.Executor;
 
+import org.junit.Rule;
 import org.junit.Test;
-
+import edu.iis.mto.multithread.RepeatM.Repeat;
 public class BetterRadarTest {
 
+	@Rule
+	public RepeatM repeat = new RepeatM();
 	@Test
+	@Repeat(times = 100)
 	public void launchPatriotOnceWhenNoticesAScudMissle() {
 		PatriotBattery batteryMock = mock(PatriotBattery.class);
 		Executor executor = new ExecutorM();
